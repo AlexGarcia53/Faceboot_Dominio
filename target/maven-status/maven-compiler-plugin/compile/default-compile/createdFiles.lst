@@ -1,0 +1,9 @@
+dominio\Comentario.class
+dominio\Sexo.class
+dominio\Solicitud.class
+dominio\Usuario.class
+dominio\Contenido.class
+dominio\Mensaje.class
+dominio\Publicacion.class
+dominio\Operacion.class
+dominio\Hashtag.class
