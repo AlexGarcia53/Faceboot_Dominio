@@ -8,18 +8,19 @@ package dominio;
 import java.io.Serializable;
 import java.util.GregorianCalendar;
 import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import jakarta.persistence.*;
+//import javax.persistence.CascadeType;
+//import javax.persistence.Column;
+//import javax.persistence.Entity;
+//import javax.persistence.EnumType;
+//import javax.persistence.Enumerated;
+//import javax.persistence.GeneratedValue;
+//import javax.persistence.GenerationType;
+//import javax.persistence.Id;
+//import javax.persistence.OneToMany;
+//import javax.persistence.Table;
+//import javax.persistence.Temporal;
+//import javax.persistence.TemporalType;
 
 /**
  * 
@@ -37,7 +38,7 @@ public class Usuario implements Serializable {
     @Column(name = "usuario", nullable = false, length = 100)
     private String usuario;
     
-    @Column(name = "email", nullable = false, length = 100)
+    @Column(name = "email", nullable = false, length = 100, unique= true)
     private String email;
     
     @Column(name = "contraseña", nullable = false, length = 100)
@@ -227,7 +228,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "dominio.usuarios[ id=" + id + " ]";
+        return "dominio.usuarios[ id=" + id + ", nombre= "+usuario+" ]";
     }
     
 }
