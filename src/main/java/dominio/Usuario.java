@@ -31,7 +31,7 @@ import jakarta.persistence.*;
 public class Usuario implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
     
@@ -82,6 +82,11 @@ public class Usuario implements Serializable {
         this.sexo = sexo;
         this.edad = edad;
         this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public Usuario(String email, String contraseña) {
+        this.email = email;
+        this.contraseña = contraseña;
     }
     
     public Usuario(String usuario, String email, String contraseña, String celular, Sexo sexo, int edad, GregorianCalendar fechaNacimiento) {
@@ -228,7 +233,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "dominio.usuarios[ id=" + id + ", nombre= "+usuario+" ]";
+        return id + ", " + usuario + ", " + email + ", " + contraseña + ", c" + celular + ", " + sexo + ", " + edad + ", " + fechaNacimiento;
     }
     
 }
