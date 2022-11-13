@@ -41,8 +41,8 @@ public class Usuario implements Serializable {
     @Column(name = "email", nullable = false, length = 100, unique= true)
     private String email;
     
-    @Column(name = "contraseña", nullable = false, length = 100)
-    private String contraseña;
+    @Column(name = "contrasenia", nullable = false, length = 100)
+    private String contrasenia;
     
     @Column(name = "celular", nullable = false, length = 15)
     private String celular;
@@ -73,37 +73,37 @@ public class Usuario implements Serializable {
     public Usuario() {
     }
 
-    public Usuario(Long id, String usuario, String email, String contraseña, String celular, Sexo sexo, int edad, GregorianCalendar fechaNacimiento) {
+    public Usuario(Long id, String usuario, String email, String contrasenia, String celular, Sexo sexo, int edad, GregorianCalendar fechaNacimiento) {
         this.id = id;
         this.usuario = usuario;
         this.email = email;
-        this.contraseña = contraseña;
+        this.contrasenia = contrasenia;
         this.celular = celular;
         this.sexo = sexo;
         this.edad = edad;
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public Usuario(String email, String contraseña) {
+    public Usuario(String email, String contrasenia) {
         this.email = email;
-        this.contraseña = contraseña;
+        this.contrasenia = contrasenia;
     }
     
-    public Usuario(String usuario, String email, String contraseña, String celular, Sexo sexo, int edad, GregorianCalendar fechaNacimiento) {
+    public Usuario(String usuario, String email, String contrasenia, String celular, Sexo sexo, int edad, GregorianCalendar fechaNacimiento) {
         this.usuario = usuario;
         this.email = email;
-        this.contraseña = contraseña;
+        this.contrasenia = contrasenia;
         this.celular = celular;
         this.sexo = sexo;
         this.edad = edad;
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public Usuario(Long id, String usuario, String email, String contraseña, String celular, Sexo sexo, int edad, GregorianCalendar fechaNacimiento, List<Publicacion> publicaciones, List<Comentario> comentarios, List<Mensaje> mensajesRecibidos, List<Mensaje> mensajesEnviados) {
+    public Usuario(Long id, String usuario, String email, String contrasenia, String celular, Sexo sexo, int edad, GregorianCalendar fechaNacimiento, List<Publicacion> publicaciones, List<Comentario> comentarios, List<Mensaje> mensajesRecibidos, List<Mensaje> mensajesEnviados) {
         this.id = id;
         this.usuario = usuario;
         this.email = email;
-        this.contraseña = contraseña;
+        this.contrasenia = contrasenia;
         this.celular = celular;
         this.sexo = sexo;
         this.edad = edad;
@@ -131,11 +131,11 @@ public class Usuario implements Serializable {
     }
 
     public String getContraseña() {
-        return contraseña;
+        return contrasenia;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContraseña(String contrasenia) {
+        this.contrasenia = contrasenia;
     }
 
     public String getCelular() {
@@ -233,7 +233,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return id + ", " + usuario + ", " + email + ", " + contraseña + ", c" + celular + ", " + sexo + ", " + edad + ", " + fechaNacimiento;
+        return id + ", " + usuario + ", " + email + ", " + contrasenia + ", c" + celular + ", " + sexo + ", " + edad + ", " + fechaNacimiento;
     }
     
 }

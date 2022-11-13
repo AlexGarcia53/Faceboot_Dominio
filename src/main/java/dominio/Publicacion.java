@@ -33,7 +33,7 @@ public class Publicacion implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", unique= true)
     private Long id;
     
     @Column(name = "fecha_creacion", nullable = false)
@@ -54,6 +54,10 @@ public class Publicacion implements Serializable {
     public Publicacion() {
     }
 
+    public Publicacion(Contenido contenido) {
+        this.contenido = contenido;
+    }
+    
     public Publicacion(GregorianCalendar fechaCreacion, Usuario usuario, Contenido contenido) {
         this.fechaCreacion = fechaCreacion;
         this.usuario = usuario;

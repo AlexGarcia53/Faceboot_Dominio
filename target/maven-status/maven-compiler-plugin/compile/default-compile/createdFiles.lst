@@ -1,3 +1,4 @@
+excepciones\ErrorGuardarUsuarioException.class
 dominio\Comentario.class
 dominio\Sexo.class
 dominio\Solicitud.class
@@ -7,3 +8,4 @@ dominio\Mensaje.class
 dominio\Publicacion.class
 dominio\Operacion.class
 dominio\Hashtag.class
+excepciones\ErrorBusquedaUsuarioException.class

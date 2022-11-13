@@ -9,5 +9,5 @@ package dominio;
  * @author Admin
  */
 public enum Operacion {
-    registrar_usuario, iniciar_sesion;
+    registrar_usuario, iniciar_sesion, registrar_publicacion;
 }
