@@ -1,11 +1,12 @@
-excepciones\ErrorGuardarUsuarioException.class
-dominio\Comentario.class
-dominio\Sexo.class
 dominio\Solicitud.class
 dominio\Usuario.class
-dominio\Contenido.class
 dominio\Mensaje.class
 dominio\Publicacion.class
 dominio\Operacion.class
 dominio\Hashtag.class
 excepciones\ErrorBusquedaUsuarioException.class
+excepciones\ErrorGuardarUsuarioException.class
+dominio\Comentario.class
+dominio\Sexo.class
+dominio\Contenido.class
+excepciones\ErrorGuardarPublicacionException.class

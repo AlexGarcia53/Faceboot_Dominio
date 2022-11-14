@@ -16,6 +16,10 @@ public class Solicitud {
     public Solicitud() {
     }
     
+    public Solicitud(Operacion operacion){
+        this.operacion= operacion;
+    }
+    
     public Solicitud(Operacion operacion, String solicitud){
         this.operacion= operacion;
         this.solicitud= solicitud;
