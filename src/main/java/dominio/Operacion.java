@@ -9,6 +9,6 @@ package dominio;
  * @author Admin
  */
 public enum Operacion {
-    registrar_usuario, iniciar_sesion, registrar_publicacion, registrar_detector_notificaciones, suscribrir_observador_registrarPublicacion, 
+    registrar_usuario, iniciar_sesion, iniciar_sesion_facebook, registrar_publicacion, registrar_detector_notificaciones, suscribrir_observador_registrarPublicacion, 
     desuscribrir_observador_registrarPublicacion;
 }

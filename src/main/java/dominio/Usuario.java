@@ -41,20 +41,23 @@ public class Usuario implements Serializable {
     @Column(name = "email", nullable = false, length = 100, unique= true)
     private String email;
     
-    @Column(name = "contrasenia", nullable = false, length = 100)
+    @Column(name = "contrasenia", length = 100)
     private String contrasenia;
     
-    @Column(name = "celular", nullable = false, length = 15)
+    @Column(name = "celular", length = 15)
     private String celular;
     
     @Enumerated(EnumType.STRING)
-    @Column(name = "sexo", nullable = false)
+    @Column(name = "sexo")
     private Sexo sexo;
     
-    @Column(name = "edad", nullable = false, length = 20)
+    @Column(name = "edad", length = 20)
     private int edad;
     
-    @Column(name = "fecha_nacimiento", nullable = false)
+    @Column(name = "token", length = 255, unique= true)
+    private String token;
+    
+    @Column(name = "fecha_nacimiento")
     @Temporal(TemporalType.TIMESTAMP)
     private GregorianCalendar fechaNacimiento;
     
@@ -72,7 +75,7 @@ public class Usuario implements Serializable {
     
     public Usuario() {
     }
-
+    
     public Usuario(Long id, String usuario, String email, String contrasenia, String celular, Sexo sexo, int edad, GregorianCalendar fechaNacimiento) {
         this.id = id;
         this.usuario = usuario;
@@ -88,7 +91,24 @@ public class Usuario implements Serializable {
         this.email = email;
         this.contrasenia = contrasenia;
     }
+
+    public Usuario(String usuario, String email, GregorianCalendar fechaNamiento, int edad, Sexo sexo, String token) {
+        this.usuario = usuario;
+        this.email = email;
+        this.fechaNacimiento = fechaNamiento;
+        this.edad = edad;
+        this.sexo = sexo;
+        this.token = token;
+    }
     
+    public Usuario(String usuario, String email, String token) {
+        this.usuario = usuario;
+        this.email = email;
+        this.token = token;
+    }
+    
+    
+  
     public Usuario(String usuario, String email, String contrasenia, String celular, Sexo sexo, int edad, GregorianCalendar fechaNacimiento) {
         this.usuario = usuario;
         this.email = email;
@@ -113,6 +133,22 @@ public class Usuario implements Serializable {
         this.mensajesRecibidos = mensajesRecibidos;
         this.mensajesEnviados = mensajesEnviados;
     }
+
+    public Usuario(Long id, String usuario, String email, String contrasenia, String celular, Sexo sexo, int edad, String token, GregorianCalendar fechaNacimiento, List<Publicacion> publicaciones, List<Comentario> comentarios, List<Mensaje> mensajesRecibidos, List<Mensaje> mensajesEnviados) {
+        this.id = id;
+        this.usuario = usuario;
+        this.email = email;
+        this.contrasenia = contrasenia;
+        this.celular = celular;
+        this.sexo = sexo;
+        this.edad = edad;
+        this.token = token;
+        this.fechaNacimiento = fechaNacimiento;
+        this.publicaciones = publicaciones;
+        this.comentarios = comentarios;
+        this.mensajesRecibidos = mensajesRecibidos;
+        this.mensajesEnviados = mensajesEnviados;
+    }
     
     public String getUsuario() {
         return usuario;
@@ -129,15 +165,7 @@ public class Usuario implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public String getContraseña() {
-        return contrasenia;
-    }
-
-    public void setContraseña(String contrasenia) {
-        this.contrasenia = contrasenia;
-    }
-
+    
     public String getCelular() {
         return celular;
     }
@@ -162,6 +190,22 @@ public class Usuario implements Serializable {
         this.edad = edad;
     }
 
+    public String getContrasenia() {
+        return contrasenia;
+    }
+
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
+    }
+
+    public String getAtoken() {
+        return token;
+    }
+
+    public void setAtoken(String token) {
+        this.token = token;
+    }
+    
     public GregorianCalendar getFechaNacimiento() {
         return fechaNacimiento;
     }
