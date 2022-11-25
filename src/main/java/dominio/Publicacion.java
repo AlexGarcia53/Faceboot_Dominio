@@ -5,6 +5,9 @@
  */
 package dominio;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.io.Serializable;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -28,6 +31,10 @@ import jakarta.persistence.*;
  * @author Gael
  */
 @Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Table(name = "publicaciones")
 public class Publicacion implements Serializable {
 
@@ -40,7 +47,7 @@ public class Publicacion implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private GregorianCalendar fechaCreacion;
     
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name="id_usuario", nullable=false)
     private Usuario usuario;
     
@@ -48,7 +55,7 @@ public class Publicacion implements Serializable {
     @JoinColumn(name="id_contenido", nullable=false)
     private Contenido contenido;
     
-    @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "publicacion")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "publicacion", fetch = FetchType.EAGER)
     private List<Comentario> comentarios;
 
     public Publicacion() {

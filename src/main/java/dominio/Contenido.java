@@ -47,6 +47,11 @@ public class Contenido implements Serializable {
     public Contenido(String textoPlano) {
         this.textoPlano = textoPlano;
     }
+
+    public Contenido(String textoPlano, byte[] imagen) {
+        this.textoPlano = textoPlano;
+        this.imagen = imagen;
+    }
     
     public Contenido(String textoPlano, byte[] imagen, List<Hashtag> hashtags) {
         this.textoPlano = textoPlano;
