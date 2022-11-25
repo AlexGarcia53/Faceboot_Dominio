@@ -5,16 +5,26 @@
 package excepciones;
 
 /**
+ * Clase utilizada para lanzar excepciones de tipo error busqueda de usuario, que
+ * extiende de RuntimeException.
  *
- * @author Admin
+ * @author Sotelo Juan, García Alex, Tellez Jarol
  */
-public class ErrorBusquedaUsuarioException extends RuntimeException{
+public class ErrorBusquedaUsuarioException extends RuntimeException {
 
+    /**
+     * Método utilizado para arrojar excepciones sin mensajes.
+     */
     public ErrorBusquedaUsuarioException() {
         super();
     }
-    
-    public ErrorBusquedaUsuarioException(String string){
+
+    /**
+     * Método utilizado para arrojar excepciones un mensaje definido.
+     *
+     * @param string Mensaje a mostrar.
+     */
+    public ErrorBusquedaUsuarioException(String string) {
         super(string);
     }
 }

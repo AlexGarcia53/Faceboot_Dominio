@@ -9,124 +9,195 @@ import java.io.Serializable;
 import java.util.GregorianCalendar;
 import java.util.List;
 import jakarta.persistence.*;
-//import javax.persistence.CascadeType;
-//import javax.persistence.Column;
-//import javax.persistence.Entity;
-//import javax.persistence.EnumType;
-//import javax.persistence.Enumerated;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.GenerationType;
-//import javax.persistence.Id;
-//import javax.persistence.OneToMany;
-//import javax.persistence.Table;
-//import javax.persistence.Temporal;
-//import javax.persistence.TemporalType;
 
 /**
- * 
- * @author Gael
+ * Clase que representa a la entidad de usuario.
+ *
+ * @author Sotelo Juan, García Alex, Tellez Jarol
  */
 @Entity
 @Table(name = "usuarios")
 public class Usuario implements Serializable {
 
+    /**
+     * Identidicador único para el usuario.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    
+    /**
+     * Nombre que tiene el usuario.
+     */
     @Column(name = "usuario", nullable = false, length = 100)
     private String usuario;
-    
-    @Column(name = "email", nullable = false, length = 100, unique= true)
+    /**
+     * Correo que tiene el usuario.
+     */
+    @Column(name = "email", nullable = false, length = 100, unique = true)
     private String email;
-    
+    /**
+     * Contraseña que tiene el usuario.
+     */
     @Column(name = "contrasenia", length = 100)
     private String contrasenia;
-    
+    /**
+     * Celular que tiene el usuario.
+     */
     @Column(name = "celular", length = 15)
     private String celular;
-    
+    /**
+     * Sexo que tiene el usuario.
+     */
     @Enumerated(EnumType.STRING)
     @Column(name = "sexo")
     private Sexo sexo;
-    
-    @Column(name = "edad", length = 20)
-    private int edad;
-    
-    @Column(name = "token", length = 255, unique= true)
+    /**
+     * Identificador externo para el usuario.
+     */
+    @Column(name = "token", length = 255, unique = true)
     private String token;
-    
+    /**
+     * Fecha de nacimiento del usuario.
+     */
     @Column(name = "fecha_nacimiento")
     @Temporal(TemporalType.TIMESTAMP)
     private GregorianCalendar fechaNacimiento;
-    
+    /**
+     * Lista de publicaciones que tiene el usuario.
+     */
     @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "usuario")
     private List<Publicacion> publicaciones;
-    
+    /**
+     * Lista de comentarios que tiene el usuario.
+     */
     @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "usuario")
     private List<Comentario> comentarios;
-    
+    /**
+     * Lista de mensajes recibidos del usuario.
+     */
     @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "usuario")
     private List<Mensaje> mensajesRecibidos;
-    
+    /**
+     * Lista de mensajes enviados por el usuario.
+     */
     @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "usuario")
     private List<Mensaje> mensajesEnviados;
-    
+
+    /**
+     * Constructor vacío.
+     */
     public Usuario() {
     }
-    
-    public Usuario(Long id, String usuario, String email, String contrasenia, String celular, Sexo sexo, int edad, GregorianCalendar fechaNacimiento) {
+
+    /**
+     * Construtor que inicializa los atributos de id, usuario, email,
+     * contraseña, celular, sexo y fecha de nacimiento.
+     *
+     * @param id Identificador externo para el usuario.
+     * @param usuario Nombre que tiene el usuario.
+     * @param email Correo que tiene el usuario.
+     * @param contrasenia Contraseña que tiene el usuario.
+     * @param celular Celular que tiene el usuario.
+     * @param sexo Sexo que tiene el usuario.
+     * @param fechaNacimiento Fecha de nacimiento del usuario.
+     */
+    public Usuario(Long id, String usuario, String email, String contrasenia, String celular, Sexo sexo, GregorianCalendar fechaNacimiento) {
         this.id = id;
         this.usuario = usuario;
         this.email = email;
         this.contrasenia = contrasenia;
         this.celular = celular;
         this.sexo = sexo;
-        this.edad = edad;
         this.fechaNacimiento = fechaNacimiento;
     }
 
+    /**
+     * Constructor que inicializa los atributos de email y contraseña.
+     *
+     * @param email Correo que tiene el usuario.
+     * @param contrasenia Contraseña que tiene el usuario.
+     */
     public Usuario(String email, String contrasenia) {
         this.email = email;
         this.contrasenia = contrasenia;
     }
 
-    public Usuario(String usuario, String email, GregorianCalendar fechaNamiento, int edad, Sexo sexo, String token) {
+    /**
+     * Constructor que inicializa los atributos de usuario, email, fecha, sexo y
+     * token.
+     *
+     * @param usuario Nombre que tiene el usuario.
+     * @param email Correo que tiene el usuario.
+     * @param fechaNacimiento Fecha de nacimiento del usuario.
+     * @param sexo Sexo que tiene el usuario.
+     * @param token Identificador externo para el usuario.
+     */
+    public Usuario(String usuario, String email, GregorianCalendar fechaNacimiento, Sexo sexo, String token) {
         this.usuario = usuario;
         this.email = email;
-        this.fechaNacimiento = fechaNamiento;
-        this.edad = edad;
+        this.fechaNacimiento = fechaNacimiento;
         this.sexo = sexo;
         this.token = token;
     }
-    
+
+    /**
+     * Constructor que inicializa los atributos de usuario, email y token.
+     *
+     * @param usuario Nombre que tiene el usuario.
+     * @param email Correo que tiene el usuario.
+     * @param token Identificador externo para el usuario.
+     */
     public Usuario(String usuario, String email, String token) {
         this.usuario = usuario;
         this.email = email;
         this.token = token;
     }
-    
-    
-  
-    public Usuario(String usuario, String email, String contrasenia, String celular, Sexo sexo, int edad, GregorianCalendar fechaNacimiento) {
+
+    /**
+     * Constructor que inicializa los atributos de usuario, email, contraseña,
+     * celular, sexo y fecha.
+     *
+     * @param usuario Nombre que tiene el usuario.
+     * @param email Correo que tiene el usuario.
+     * @param contrasenia Contraseña que tiene el usuario.
+     * @param celular Celular que tiene el usuario.
+     * @param sexo Sexo que tiene el usuario.
+     * @param fechaNacimiento Fecha de nacimiento del usuario.
+     */
+    public Usuario(String usuario, String email, String contrasenia, String celular, Sexo sexo, GregorianCalendar fechaNacimiento) {
         this.usuario = usuario;
         this.email = email;
         this.contrasenia = contrasenia;
         this.celular = celular;
         this.sexo = sexo;
-        this.edad = edad;
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public Usuario(Long id, String usuario, String email, String contrasenia, String celular, Sexo sexo, int edad, GregorianCalendar fechaNacimiento, List<Publicacion> publicaciones, List<Comentario> comentarios, List<Mensaje> mensajesRecibidos, List<Mensaje> mensajesEnviados) {
+    /**
+     * Constructor que inicializa los atributos de id, usuario, email,
+     * contraseña, celular, sexo, fecha, publicaciones, comentarios, mensajes
+     * recibidos y mensajes enviados.
+     *
+     * @param id Identificador externo para el usuario.
+     * @param usuario Nombre que tiene el usuario.
+     * @param email Correo que tiene el usuario.
+     * @param contrasenia Contraseña que tiene el usuario.
+     * @param celular Celular que tiene el usuario.
+     * @param sexo Sexo que tiene el usuario.
+     * @param fechaNacimiento Fecha de nacimiento del usuario.
+     * @param publicaciones Lista de publicaciones que tiene el usuario.
+     * @param comentarios Lista de comentarios que tiene el usuario.
+     * @param mensajesRecibidos Lista de mensajes recibidos del usuario.
+     * @param mensajesEnviados Lista de mensajes enviados por el usuario.
+     */
+    public Usuario(Long id, String usuario, String email, String contrasenia, String celular, Sexo sexo, GregorianCalendar fechaNacimiento, List<Publicacion> publicaciones, List<Comentario> comentarios, List<Mensaje> mensajesRecibidos, List<Mensaje> mensajesEnviados) {
         this.id = id;
         this.usuario = usuario;
         this.email = email;
         this.contrasenia = contrasenia;
         this.celular = celular;
         this.sexo = sexo;
-        this.edad = edad;
         this.fechaNacimiento = fechaNacimiento;
         this.publicaciones = publicaciones;
         this.comentarios = comentarios;
@@ -134,14 +205,31 @@ public class Usuario implements Serializable {
         this.mensajesEnviados = mensajesEnviados;
     }
 
-    public Usuario(Long id, String usuario, String email, String contrasenia, String celular, Sexo sexo, int edad, String token, GregorianCalendar fechaNacimiento, List<Publicacion> publicaciones, List<Comentario> comentarios, List<Mensaje> mensajesRecibidos, List<Mensaje> mensajesEnviados) {
+    /**
+     * Constructor que inicializa los atributos de id, usuario, email,
+     * contraseña, celular, sexo, token, fecha, publicaciones, comentarios,
+     * mensajes recibidos y mensajes enviados.
+     *
+     * @param id Identificador externo para el usuario.
+     * @param usuario Nombre que tiene el usuario.
+     * @param email Correo que tiene el usuario.
+     * @param contrasenia Contraseña que tiene el usuario.
+     * @param celular Celular que tiene el usuario.
+     * @param sexo Sexo que tiene el usuario.
+     * @param token Identificador externo para el usuario.
+     * @param fechaNacimiento Fecha de nacimiento del usuario.
+     * @param publicaciones Lista de publicaciones que tiene el usuario.
+     * @param comentarios Lista de comentarios que tiene el usuario.
+     * @param mensajesRecibidos Lista de mensajes recibidos del usuario.
+     * @param mensajesEnviados Lista de mensajes enviados por el usuario.
+     */
+    public Usuario(Long id, String usuario, String email, String contrasenia, String celular, Sexo sexo, String token, GregorianCalendar fechaNacimiento, List<Publicacion> publicaciones, List<Comentario> comentarios, List<Mensaje> mensajesRecibidos, List<Mensaje> mensajesEnviados) {
         this.id = id;
         this.usuario = usuario;
         this.email = email;
         this.contrasenia = contrasenia;
         this.celular = celular;
         this.sexo = sexo;
-        this.edad = edad;
         this.token = token;
         this.fechaNacimiento = fechaNacimiento;
         this.publicaciones = publicaciones;
@@ -149,112 +237,228 @@ public class Usuario implements Serializable {
         this.mensajesRecibidos = mensajesRecibidos;
         this.mensajesEnviados = mensajesEnviados;
     }
-    
+
+    /**
+     * Método para obtener el nombre.
+     *
+     * @return Nombre que tiene el usuario.
+     */
     public String getUsuario() {
         return usuario;
     }
 
+    /**
+     * Método para establecer el nombre.
+     *
+     * @param usuario Nombre que tiene el usuario.
+     */
     public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
 
+    /**
+     * Método para obtener el correo.
+     *
+     * @return Correo que tiene el usuario.
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * Método para establecer el correo.
+     *
+     * @param email Correo que tiene el usuario.
+     */
     public void setEmail(String email) {
         this.email = email;
     }
-    
+
+    /**
+     * Método para obtner el celular.
+     *
+     * @return Celular que tiene el usuario.
+     */
     public String getCelular() {
         return celular;
     }
 
+    /**
+     * Método para establecer el celular.
+     *
+     * @param celular Celular que tiene el usuario.
+     */
     public void setCelular(String celular) {
         this.celular = celular;
     }
 
+    /**
+     * Método para obtener el sexo.
+     *
+     * @return Sexo que tiene el usuario.
+     */
     public Sexo getSexo() {
         return sexo;
     }
 
+    /**
+     * Método para establecer el sexo.
+     *
+     * @param sexo Sexo que tiene el usuario.
+     */
     public void setSexo(Sexo sexo) {
         this.sexo = sexo;
     }
 
-    public int getEdad() {
-        return edad;
-    }
-
-    public void setEdad(int edad) {
-        this.edad = edad;
-    }
-
+    /**
+     * Método para obtener la contraseña.
+     *
+     * @return Contraseña que tiene el usuario.
+     */
     public String getContrasenia() {
         return contrasenia;
     }
 
+    /**
+     * Método para establecer la contraseña.
+     *
+     * @param contrasenia Contraseña que tiene el usuario.
+     */
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
     }
 
+    /**
+     * Método para obtener el token.
+     *
+     * @return Identificador externo para el usuario.
+     */
     public String getAtoken() {
         return token;
     }
 
+    /**
+     * Método para establecer el token.
+     *
+     * @param token Identificador externo para el usuario.
+     */
     public void setAtoken(String token) {
         this.token = token;
     }
-    
+
+    /**
+     * Método para obtener la fecha de nacimiento.
+     *
+     * @return Fecha de nacimiento del usuario.
+     */
     public GregorianCalendar getFechaNacimiento() {
         return fechaNacimiento;
     }
 
+    /**
+     * Método para establecer la fecha de nacimiento.
+     *
+     * @param fechaNacimiento Fecha de nacimiento del usuario.
+     */
     public void setFechaNacimiento(GregorianCalendar fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
+    /**
+     * Método para obtener la lista de publicaciones.
+     *
+     * @return Lista de publicaciones que tiene el usuario.
+     */
     public List<Publicacion> getPublicaciones() {
         return publicaciones;
     }
 
+    /**
+     * Método para establecer la lista de publicaciones.
+     *
+     * @param publicaciones Lista de publicaciones que tiene el usuario.
+     */
     public void setPublicaciones(List<Publicacion> publicaciones) {
         this.publicaciones = publicaciones;
     }
 
+    /**
+     * Método para obtener la lista de comentarios.
+     *
+     * @return Lista de comentarios que tiene el usuario.
+     */
     public List<Comentario> getComentarios() {
         return comentarios;
     }
 
+    /**
+     * Método para establecer la lista de comentarios.
+     *
+     * @param comentarios Lista de comentarios que tiene el usuario.
+     */
     public void setComentarios(List<Comentario> comentarios) {
         this.comentarios = comentarios;
     }
 
+    /**
+     * Método para obtener la lista de mensajes recibidos.
+     *
+     * @return Lista de mensajes recibidos del usuario.
+     */
     public List<Mensaje> getMensajesRecibidos() {
         return mensajesRecibidos;
     }
 
+    /**
+     * Método para establecer la lista de mensajes recibidos.
+     *
+     * @param mensajesRecibidos Lista de mensajes recibidos del usuario.
+     */
     public void setMensajesRecibidos(List<Mensaje> mensajesRecibidos) {
         this.mensajesRecibidos = mensajesRecibidos;
     }
 
+    /**
+     * Método para obtener la lista de mensajes enviados.
+     *
+     * @return Lista de mensajes enviados por el usuario.
+     */
     public List<Mensaje> getMensajesEnviados() {
         return mensajesEnviados;
     }
 
+    /**
+     * Método para establecer la lista de mensajes enviados.
+     *
+     * @param mensajesEnviados Lista de mensajes enviados por el usuario.
+     */
     public void setMensajesEnviados(List<Mensaje> mensajesEnviados) {
         this.mensajesEnviados = mensajesEnviados;
     }
-    
-    
+
+    /**
+     * Método para obtener el id.
+     *
+     * @return Identidicador único para el usuario.
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     * Método para establecer el id.
+     *
+     * @param id Identidicador único para el usuario.
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     * Método que regresa el código hash.
+     *
+     * @return hashCode.
+     */
     @Override
     public int hashCode() {
         int hash = 0;
@@ -262,6 +466,12 @@ public class Usuario implements Serializable {
         return hash;
     }
 
+    /**
+     * Método equals para encontrar Identificadores coincidentes.
+     *
+     * @param object Objeto a comparar.
+     * @return verdadero si los id son iguales, falso en caso contrario.
+     */
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -275,9 +485,14 @@ public class Usuario implements Serializable {
         return true;
     }
 
+    /**
+     * Método para obtener los atributos.
+     *
+     * @return Cadena de texto con los atributos de la entidad.
+     */
     @Override
     public String toString() {
-        return id + ", " + usuario + ", " + email + ", " + contrasenia + ", c" + celular + ", " + sexo + ", " + edad + ", " + fechaNacimiento;
+        return id + ", " + usuario + ", " + email + ", " + contrasenia + ", c" + celular + ", " + sexo + ", " + fechaNacimiento;
     }
-    
+
 }

@@ -5,17 +5,17 @@
 package excepciones;
 
 /**
- * Clase utilizada para lanzar excepciones de tipo error guardar publicación,
- * que extiende de RuntimeException.
+ * Clase utilizada para lanzar excepciones de tipo datos erroneos, que extiende
+ * de RuntimeException.
  *
  * @author Sotelo Juan, García Alex, Tellez Jarol
  */
-public class ErrorGuardarPublicacionException extends RuntimeException {
+public class ErrorDatosErroneosException extends RuntimeException {
 
     /**
      * Método utilizado para arrojar excepciones sin mensajes.
      */
-    public ErrorGuardarPublicacionException() {
+    public ErrorDatosErroneosException() {
         super();
     }
 
@@ -24,7 +24,7 @@ public class ErrorGuardarPublicacionException extends RuntimeException {
      *
      * @param string Mensaje a mostrar.
      */
-    public ErrorGuardarPublicacionException(String string) {
+    public ErrorDatosErroneosException(String string) {
         super(string);
     }
 }

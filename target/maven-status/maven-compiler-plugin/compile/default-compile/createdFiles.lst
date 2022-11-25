@@ -9,4 +9,5 @@ excepciones\ErrorGuardarUsuarioException.class
 dominio\Comentario.class
 dominio\Sexo.class
 dominio\Contenido.class
+excepciones\ErrorDatosErroneosException.class
 excepciones\ErrorGuardarPublicacionException.class

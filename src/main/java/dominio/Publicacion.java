@@ -12,23 +12,11 @@ import java.io.Serializable;
 import java.util.GregorianCalendar;
 import java.util.List;
 import jakarta.persistence.*;
-//import javax.persistence.CascadeType;
-//import javax.persistence.Column;
-//import javax.persistence.Entity;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.GenerationType;
-//import javax.persistence.Id;
-//import javax.persistence.JoinColumn;
-//import javax.persistence.ManyToOne;
-//import javax.persistence.OneToMany;
-//import javax.persistence.OneToOne;
-//import javax.persistence.Table;
-//import javax.persistence.Temporal;
-//import javax.persistence.TemporalType;
 
 /**
+ * Clase que representa a la entidad de publicación.
  *
- * @author Gael
+ * @author Sotelo Juan, García Alex, Tellez Jarol
  */
 @Entity
 @JsonIdentityInfo(
@@ -38,39 +26,74 @@ import jakarta.persistence.*;
 @Table(name = "publicaciones")
 public class Publicacion implements Serializable {
 
+    /**
+     * Identidicador único para la publicación.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique= true)
+    @Column(name = "id", unique = true)
     private Long id;
-    
+    /**
+     * Fecha de creación de la publicación.
+     */
     @Column(name = "fecha_creacion", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private GregorianCalendar fechaCreacion;
-    
+    /**
+     * Usuario con el que se relaciona la publicación.
+     */
     @ManyToOne(cascade = CascadeType.REFRESH)
-    @JoinColumn(name="id_usuario", nullable=false)
+    @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario usuario;
-    
+    /**
+     * Contenido con el que se relaciona la publicación.
+     */
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="id_contenido", nullable=false)
+    @JoinColumn(name = "id_contenido", nullable = false)
     private Contenido contenido;
-    
+    /**
+     * Lista de comentarios que tiene la publicación.
+     */
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "publicacion", fetch = FetchType.EAGER)
     private List<Comentario> comentarios;
 
+    /**
+     * Constructor vacío.
+     */
     public Publicacion() {
     }
 
+    /**
+     * Constructor que inicializa el atributo de contenido.
+     *
+     * @param contenido Contenido con el que se relaciona la publicación.
+     */
     public Publicacion(Contenido contenido) {
         this.contenido = contenido;
     }
-    
+
+    /**
+     * Constructor que inicializa los atributos de fecha, usuario y contenido.
+     *
+     * @param fechaCreacion Fecha de creación de la publicación.
+     * @param usuario Usuario con el que se relaciona la publicación.
+     * @param contenido Contenido con el que se relaciona la publicación.
+     */
     public Publicacion(GregorianCalendar fechaCreacion, Usuario usuario, Contenido contenido) {
         this.fechaCreacion = fechaCreacion;
         this.usuario = usuario;
         this.contenido = contenido;
     }
 
+    /**
+     * Constructor que inicializa los atributos de id, fecha, usuario y
+     * contenido.
+     *
+     * @param id Identidicador único para la publicación.
+     * @param fechaCreacion Fecha de creación de la publicación.
+     * @param usuario Usuario con el que se relaciona la publicación.
+     * @param contenido Contenido con el que se relaciona la publicación.
+     */
     public Publicacion(Long id, GregorianCalendar fechaCreacion, Usuario usuario, Contenido contenido) {
         this.id = id;
         this.fechaCreacion = fechaCreacion;
@@ -78,6 +101,16 @@ public class Publicacion implements Serializable {
         this.contenido = contenido;
     }
 
+    /**
+     * Constructor que inicializa los atributos de id, fecha, usuario, contenido
+     * y comentarios.
+     *
+     * @param id Identidicador único para la publicación.
+     * @param fechaCreacion Fecha de creación de la publicación.
+     * @param usuario Usuario con el que se relaciona la publicación.
+     * @param contenido Contenido con el que se relaciona la publicación.
+     * @param comentarios Lista de comentarios que tiene la publicación.
+     */
     public Publicacion(Long id, GregorianCalendar fechaCreacion, Usuario usuario, Contenido contenido, List<Comentario> comentarios) {
         this.id = id;
         this.fechaCreacion = fechaCreacion;
@@ -85,47 +118,102 @@ public class Publicacion implements Serializable {
         this.contenido = contenido;
         this.comentarios = comentarios;
     }
-    
+
+    /**
+     * Método para obtener la fecha de creación.
+     *
+     * @return Fecha de creación de la publicación.
+     */
     public GregorianCalendar getFechaCreacion() {
         return fechaCreacion;
     }
 
+    /**
+     * Método para establecer la fecha de creación.
+     *
+     * @param fechaCreacion Fecha de creación de la publicación.
+     */
     public void setFechaCreacion(GregorianCalendar fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
 
+    /**
+     * Método para obtener al usuario.
+     *
+     * @return Usuario con el que se relaciona la publicación.
+     */
     public Usuario getUsuario() {
         return usuario;
     }
 
+    /**
+     * Método para establecer al usuario.
+     *
+     * @param usuario Usuario con el que se relaciona la publicación.
+     */
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 
+    /**
+     * Método para obtener el contenido.
+     *
+     * @return Contenido con el que se relaciona la publicación.
+     */
     public Contenido getContenido() {
         return contenido;
     }
 
+    /**
+     * Método para establecer el contenido.
+     *
+     * @param contenido Contenido con el que se relaciona la publicación.
+     */
     public void setContenido(Contenido contenido) {
         this.contenido = contenido;
     }
 
+    /**
+     * Método para obtener los comentarios.
+     *
+     * @return Lista de comentarios que tiene la publicación.
+     */
     public List<Comentario> getComentarios() {
         return comentarios;
     }
 
+    /**
+     * Método para establecer los comentarios.
+     *
+     * @param comentarios Lista de comentarios que tiene la publicación.
+     */
     public void setComentarios(List<Comentario> comentarios) {
         this.comentarios = comentarios;
     }
-    
+
+    /**
+     * Método para obtener el id.
+     *
+     * @return Identidicador único para la publicación.
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     * Método para establecer el id.
+     *
+     * @param id Identidicador único para la publicación.
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     * Método que regresa el código hash.
+     *
+     * @return hashCode.
+     */
     @Override
     public int hashCode() {
         int hash = 0;
@@ -133,6 +221,12 @@ public class Publicacion implements Serializable {
         return hash;
     }
 
+    /**
+     * Método equals para encontrar Identificadores coincidentes.
+     *
+     * @param object Objeto a comparar.
+     * @return verdadero si los id son iguales, falso en caso contrario.
+     */
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -146,9 +240,14 @@ public class Publicacion implements Serializable {
         return true;
     }
 
+    /**
+     * Método para obtener los atributos.
+     *
+     * @return Cadena de texto con los atributos de la entidad.
+     */
     @Override
     public String toString() {
         return "dominio.Publicacion[ id=" + id + " ]";
     }
-    
+
 }

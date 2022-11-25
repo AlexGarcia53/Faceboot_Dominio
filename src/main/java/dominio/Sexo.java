@@ -6,8 +6,9 @@
 package dominio;
 
 /**
+ * Clase enum que contiene los posibles sexos del usuario.
  *
- * @author Gael
+ * @author Sotelo Juan, García Alex, Tellez Jarol
  */
 public enum Sexo {
     MASCULINO, FEMENINO;
