@@ -17,8 +17,8 @@ import jakarta.persistence.*;
 @Table(name = "mensajes")
 public class Mensaje implements Serializable {
 
-    /**
-     * Identidicador único para el comentario.
+      /**
+     * Identidicador único para el mensaje
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +29,16 @@ public class Mensaje implements Serializable {
      */
     @Column(name = "texto_plano", nullable = false, length = 500)
     private String textoPlano;
+    /**
+     * Tipo de envio correo
+     */
+    @Column(name = "envio_Correo", nullable = false)
+    private boolean envioCorreo;
+     /**
+     * Tipo de envio correo
+     */
+    @Column(name = "envio_Sms", nullable = false)
+    private boolean envioSms;
     /**
      * Usuario con el que se relaciona el mensaje.
      */
@@ -60,6 +70,16 @@ public class Mensaje implements Serializable {
         this.usuario = usuario;
         this.receptor = receptor;
     }
+
+    public Mensaje(Long id, String textoPlano, boolean envioCorreo, boolean envioSms, Usuario usuario, Usuario receptor) {
+        this.id = id;
+        this.textoPlano = textoPlano;
+        this.envioCorreo = envioCorreo;
+        this.envioSms = envioSms;
+        this.usuario = usuario;
+        this.receptor = receptor;
+    }
+    
 
     /**
      * Constructor que inicializa los atributos de id, texto, usuario y
@@ -150,6 +170,30 @@ public class Mensaje implements Serializable {
     }
 
     /**
+     * Metodo para establecer el metodo de envio correo
+     * @return cierto falso en el envio de correo
+     */
+    public boolean getEnvioCorreo() {
+        return envioCorreo;
+    }
+
+    /**
+     * Establece el valor de cierto o falso para el envio de correo
+     * @param envioCorreo Envio de correo
+     */
+    public void setEnvioCorreo(boolean envioCorreo) {
+        this.envioCorreo = envioCorreo;
+    }
+
+    public boolean getEnvioSms() {
+        return envioSms;
+    }
+
+    public void setEnvioSms(boolean envioSms) {
+        this.envioSms = envioSms;
+    }
+
+    /**
      * Método que regresa el código hash.
      *
      * @return hashCode.
@@ -189,5 +233,6 @@ public class Mensaje implements Serializable {
     public String toString() {
         return "dominio.Mensaje[ id=" + id + " ]";
     }
+
 
 }
