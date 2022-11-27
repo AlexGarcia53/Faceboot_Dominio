@@ -1,3 +1,4 @@
+excepciones\ErrorBusquedaPublicacionesException.class
 dominio\Solicitud.class
 dominio\Usuario.class
 dominio\Mensaje.class
