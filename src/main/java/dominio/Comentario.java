@@ -5,6 +5,9 @@
  */
 package dominio;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.io.Serializable;
 import java.util.GregorianCalendar;
 import jakarta.persistence.*;
@@ -46,7 +49,7 @@ public class Comentario implements Serializable {
     /**
      * Contenido con el que se relaciona el comentario.
      */
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_contenido", nullable = true)
     private Contenido contenido;
 
