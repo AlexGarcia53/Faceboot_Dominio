@@ -20,8 +20,9 @@ import jakarta.persistence.*;
  */
 @Entity
 @JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
+        generator = ObjectIdGenerators.IntSequenceGenerator.class,
+        property = "@id",
+        scope = Publicacion.class)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Table(name = "publicaciones")
 public class Publicacion implements Serializable {

@@ -17,7 +17,7 @@ import jakarta.persistence.*;
  */
 @Entity
 @Table(name = "usuarios")
-public class Usuario implements Serializable {
+public class Usuario {
 
     /**
      * Identidicador único para el usuario.
@@ -66,13 +66,13 @@ public class Usuario implements Serializable {
     /**
      * Lista de publicaciones que tiene el usuario.
      */
-    @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "usuario")
-    private List<Publicacion> publicaciones;
+//    @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "usuario")
+//    private List<Publicacion> publicaciones;
     /**
      * Lista de comentarios que tiene el usuario.
      */
-    @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "usuario")
-    private List<Comentario> comentarios;
+//    @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "usuario")
+//    private List<Comentario> comentarios;
     /**
      * Lista de mensajes recibidos del usuario.
      */
@@ -191,20 +191,57 @@ public class Usuario implements Serializable {
      * @param mensajesRecibidos Lista de mensajes recibidos del usuario.
      * @param mensajesEnviados Lista de mensajes enviados por el usuario.
      */
-    public Usuario(Long id, String usuario, String email, String contrasenia, String celular, Sexo sexo, GregorianCalendar fechaNacimiento, List<Publicacion> publicaciones, List<Comentario> comentarios, List<Mensaje> mensajesRecibidos, List<Mensaje> mensajesEnviados) {
+    public Usuario(Long id, String usuario, String email, String contrasenia, String celular, Sexo sexo, String token, GregorianCalendar fechaNacimiento, List<Mensaje> mensajesRecibidos, List<Mensaje> mensajesEnviados) {
         this.id = id;
         this.usuario = usuario;
         this.email = email;
         this.contrasenia = contrasenia;
         this.celular = celular;
         this.sexo = sexo;
+        this.token = token;
         this.fechaNacimiento = fechaNacimiento;
-        this.publicaciones = publicaciones;
-        this.comentarios = comentarios;
         this.mensajesRecibidos = mensajesRecibidos;
         this.mensajesEnviados = mensajesEnviados;
     }
 
+//    public Usuario(Long id, String usuario, String email, String contrasenia, String celular, Sexo sexo, String token, GregorianCalendar fechaNacimiento, List<Publicacion> publicaciones, List<Mensaje> mensajesRecibidos, List<Mensaje> mensajesEnviados) {
+//        this.id = id;
+//        this.usuario = usuario;
+//        this.email = email;
+//        this.contrasenia = contrasenia;
+//        this.celular = celular;
+//        this.sexo = sexo;
+//        this.token = token;
+//        this.fechaNacimiento = fechaNacimiento;
+//        this.publicaciones = publicaciones;
+//        this.mensajesRecibidos = mensajesRecibidos;
+//        this.mensajesEnviados = mensajesEnviados;
+//    }
+//    public Usuario(Long id, String usuario, String email, String contrasenia, String celular, Sexo sexo, GregorianCalendar fechaNacimiento, List<Publicacion> publicaciones, List<Mensaje> mensajesRecibidos, List<Mensaje> mensajesEnviados) {
+//        this.id = id;
+//        this.usuario = usuario;
+//        this.email = email;
+//        this.contrasenia = contrasenia;
+//        this.celular = celular;
+//        this.sexo = sexo;
+//        this.fechaNacimiento = fechaNacimiento;
+//        this.publicaciones = publicaciones;
+//        this.mensajesRecibidos = mensajesRecibidos;
+//        this.mensajesEnviados = mensajesEnviados;
+//    }
+//    public Usuario(Long id, String usuario, String email, String contrasenia, String celular, Sexo sexo, GregorianCalendar fechaNacimiento, List<Publicacion> publicaciones, List<Comentario> comentarios, List<Mensaje> mensajesRecibidos, List<Mensaje> mensajesEnviados) {
+//        this.id = id;
+//        this.usuario = usuario;
+//        this.email = email;
+//        this.contrasenia = contrasenia;
+//        this.celular = celular;
+//        this.sexo = sexo;
+//        this.fechaNacimiento = fechaNacimiento;
+//        this.publicaciones = publicaciones;
+//        this.comentarios = comentarios;
+//        this.mensajesRecibidos = mensajesRecibidos;
+//        this.mensajesEnviados = mensajesEnviados;
+//    }
     /**
      * Constructor que inicializa los atributos de id, usuario, email,
      * contraseña, celular, sexo, token, fecha, publicaciones, comentarios,
@@ -223,21 +260,20 @@ public class Usuario implements Serializable {
      * @param mensajesRecibidos Lista de mensajes recibidos del usuario.
      * @param mensajesEnviados Lista de mensajes enviados por el usuario.
      */
-    public Usuario(Long id, String usuario, String email, String contrasenia, String celular, Sexo sexo, String token, GregorianCalendar fechaNacimiento, List<Publicacion> publicaciones, List<Comentario> comentarios, List<Mensaje> mensajesRecibidos, List<Mensaje> mensajesEnviados) {
-        this.id = id;
-        this.usuario = usuario;
-        this.email = email;
-        this.contrasenia = contrasenia;
-        this.celular = celular;
-        this.sexo = sexo;
-        this.token = token;
-        this.fechaNacimiento = fechaNacimiento;
-        this.publicaciones = publicaciones;
-        this.comentarios = comentarios;
-        this.mensajesRecibidos = mensajesRecibidos;
-        this.mensajesEnviados = mensajesEnviados;
-    }
-
+//    public Usuario(Long id, String usuario, String email, String contrasenia, String celular, Sexo sexo, String token, GregorianCalendar fechaNacimiento, List<Publicacion> publicaciones, List<Comentario> comentarios, List<Mensaje> mensajesRecibidos, List<Mensaje> mensajesEnviados) {
+//        this.id = id;
+//        this.usuario = usuario;
+//        this.email = email;
+//        this.contrasenia = contrasenia;
+//        this.celular = celular;
+//        this.sexo = sexo;
+//        this.token = token;
+//        this.fechaNacimiento = fechaNacimiento;
+//        this.publicaciones = publicaciones;
+//        this.comentarios = comentarios;
+//        this.mensajesRecibidos = mensajesRecibidos;
+//        this.mensajesEnviados = mensajesEnviados;
+//    }
     /**
      * Método para obtener el nombre.
      *
@@ -369,36 +405,36 @@ public class Usuario implements Serializable {
      *
      * @return Lista de publicaciones que tiene el usuario.
      */
-    public List<Publicacion> getPublicaciones() {
-        return publicaciones;
-    }
+//    public List<Publicacion> getPublicaciones() {
+//        return publicaciones;
+//    }
 
     /**
      * Método para establecer la lista de publicaciones.
      *
      * @param publicaciones Lista de publicaciones que tiene el usuario.
      */
-    public void setPublicaciones(List<Publicacion> publicaciones) {
-        this.publicaciones = publicaciones;
-    }
+//    public void setPublicaciones(List<Publicacion> publicaciones) {
+//        this.publicaciones = publicaciones;
+//    }
 
     /**
      * Método para obtener la lista de comentarios.
      *
      * @return Lista de comentarios que tiene el usuario.
      */
-    public List<Comentario> getComentarios() {
-        return comentarios;
-    }
+//    public List<Comentario> getComentarios() {
+//        return comentarios;
+//    }
 
     /**
      * Método para establecer la lista de comentarios.
      *
      * @param comentarios Lista de comentarios que tiene el usuario.
      */
-    public void setComentarios(List<Comentario> comentarios) {
-        this.comentarios = comentarios;
-    }
+//    public void setComentarios(List<Comentario> comentarios) {
+//        this.comentarios = comentarios;
+//    }
 
     /**
      * Método para obtener la lista de mensajes recibidos.

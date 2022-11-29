@@ -18,10 +18,6 @@ import jakarta.persistence.*;
  * @author Sotelo Juan, García Alex, Tellez Jarol
  */
 @Entity
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
-@JsonInclude(JsonInclude.Include.NON_NULL)
 @Table(name = "contenidos")
 public class Contenido implements Serializable {
 
