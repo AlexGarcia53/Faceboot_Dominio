@@ -199,7 +199,15 @@ public class Publicacion implements Serializable {
     public void eliminarComentario(Comentario comentario){
         this.comentarios.remove(comentario);
     }
-
+    
+    public void editarComentario(Comentario comentario){
+        for (int i = 0; i < this.comentarios.size(); i++) {
+            if(comentarios.get(i).getId()==comentario.getId()){
+                comentarios.set(i, comentario);
+            }
+        }
+    }
+    
     /**
      * Método para obtener el id.
      *

@@ -42,7 +42,7 @@ public class Contenido implements Serializable {
     /**
      * Lista de hashtags del contenido.
      */
-    @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "contenido")
+    @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "contenido", fetch = FetchType.EAGER)
     private List<Hashtag> hashtags;
 
     /**

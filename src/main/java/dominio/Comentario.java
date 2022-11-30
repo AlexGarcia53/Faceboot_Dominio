@@ -50,7 +50,7 @@ public class Comentario implements Serializable {
      * Contenido con el que se relaciona el comentario.
      */
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_contenido", nullable = true)
+    @JoinColumn(name = "id_contenido", nullable = false)
     private Contenido contenido;
 
     /**
