@@ -36,9 +36,9 @@ public class Contenido implements Serializable {
     /**
      * Imagen que tiene el contenido.
      */
-    @Lob
+//    @Lob
     @Column(name = "imagen", nullable = true)
-    private byte[] imagen;
+    private String imagen;
     /**
      * Lista de hashtags del contenido.
      */
@@ -66,7 +66,7 @@ public class Contenido implements Serializable {
      * @param textoPlano Texto plano que tiene el contenido.
      * @param imagen Imagen que tiene el contenido.
      */
-    public Contenido(String textoPlano, byte[] imagen) {
+    public Contenido(String textoPlano, String imagen) {
         this.textoPlano = textoPlano;
         this.imagen = imagen;
     }
@@ -78,7 +78,7 @@ public class Contenido implements Serializable {
      * @param imagen Imagen que tiene el contenido.
      * @param hashtags Lista de hashtags del contenido.
      */
-    public Contenido(String textoPlano, byte[] imagen, List<Hashtag> hashtags) {
+    public Contenido(String textoPlano, String imagen, List<Hashtag> hashtags) {
         this.textoPlano = textoPlano;
         this.imagen = imagen;
         this.hashtags = hashtags;
@@ -92,7 +92,7 @@ public class Contenido implements Serializable {
      * @param imagen Imagen que tiene el contenido.
      * @param hashtags Lista de hashtags del contenido.
      */
-    public Contenido(Long id, String textoPlano, byte[] imagen, List<Hashtag> hashtags) {
+    public Contenido(Long id, String textoPlano, String imagen, List<Hashtag> hashtags) {
         this.id = id;
         this.textoPlano = textoPlano;
         this.imagen = imagen;
@@ -122,7 +122,7 @@ public class Contenido implements Serializable {
      *
      * @return Imagen que tiene el contenido.
      */
-    public byte[] getImagen() {
+    public String getImagen() {
         return imagen;
     }
 
@@ -131,7 +131,7 @@ public class Contenido implements Serializable {
      *
      * @param imagen Imagen que tiene el contenido.
      */
-    public void setImagen(byte[] imagen) {
+    public void setImagen(String imagen) {
         this.imagen = imagen;
     }
 
