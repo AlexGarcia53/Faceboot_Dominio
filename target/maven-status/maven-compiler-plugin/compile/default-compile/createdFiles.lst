@@ -15,4 +15,5 @@ dominio\Sexo.class
 dominio\Contenido.class
 excepciones\ErrorDatosErroneosException.class
 excepciones\ErrorEliminarComentarioException.class
+excepciones\ErrorEditarUsuarioException.class
 excepciones\ErrorGuardarPublicacionException.class

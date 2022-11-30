@@ -10,6 +10,7 @@ C:\Users\Admin\Documents\GitHub\Faceboot_Dominio\src\main\java\excepciones\Error
 C:\Users\Admin\Documents\GitHub\Faceboot_Dominio\src\main\java\dominio\Hashtag.java
 C:\Users\Admin\Documents\GitHub\Faceboot_Dominio\src\main\java\dominio\Usuario.java
 C:\Users\Admin\Documents\GitHub\Faceboot_Dominio\src\main\java\excepciones\ErrorBusquedaPublicacionesException.java
+C:\Users\Admin\Documents\GitHub\Faceboot_Dominio\src\main\java\excepciones\ErrorEditarUsuarioException.java
 C:\Users\Admin\Documents\GitHub\Faceboot_Dominio\src\main\java\dominio\Comentario.java
 C:\Users\Admin\Documents\GitHub\Faceboot_Dominio\src\main\java\dominio\Operacion.java
 C:\Users\Admin\Documents\GitHub\Faceboot_Dominio\src\main\java\excepciones\ErrorGuardarComentarioException.java

@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.io.Serializable;
 import java.util.List;
 import jakarta.persistence.*;
+import java.util.ArrayList;
 
 /**
  * Clase que representa a la entidad de contenido.
@@ -42,8 +43,8 @@ public class Contenido implements Serializable {
     /**
      * Lista de hashtags del contenido.
      */
-    @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "contenido", fetch = FetchType.EAGER)
-    private List<Hashtag> hashtags;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "contenido", fetch = FetchType.EAGER)
+    private List<Hashtag> hashtags= new ArrayList<>();
 
     /**
      * Constructor vacío.
@@ -151,6 +152,10 @@ public class Contenido implements Serializable {
      */
     public void setHashtags(List<Hashtag> hashtags) {
         this.hashtags = hashtags;
+    }
+    
+    public void agregarHashtag(Hashtag hashtag){
+        this.hashtags.add(hashtag);
     }
 
     /**
