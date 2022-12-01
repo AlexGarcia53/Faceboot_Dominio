@@ -14,5 +14,5 @@ public enum Operacion {
     desuscribrir_observador_registrarPublicacion, consultar_publicaciones, suscribir_observador_editarPublicacion, desuscribir_observador_editarPublicacion, editar_publicacion,
     eliminar_publicacion, suscribir_observador_eliminarPublicacion, desuscribir_observador_eliminarPublicacion, registrar_comentario, editar_comentario,
     suscribir_observador_registrarComentario, desuscribir_observador_registrarComentario, suscribir_observador_editarComentario, desuscribir_observador_editarComentario, 
-    eliminar_comentario, suscribir_observador_eliminarComentario, desuscribir_observador_eliminarComentario, editar_perfil;
+    eliminar_comentario, suscribir_observador_eliminarComentario, desuscribir_observador_eliminarComentario, editar_perfil, consultar_usuarioNombre, registrar_mensaje;
 }

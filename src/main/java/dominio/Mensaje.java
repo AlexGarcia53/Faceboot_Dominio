@@ -42,6 +42,9 @@ public class Mensaje implements Serializable {
     @JoinColumn(name = "id_receptor", nullable = false)
     private Usuario receptor;
 
+    private boolean mensajeSMS;
+    private boolean mensajeEmail;
+    
     /**
      * Constructor vacío.
      */
@@ -75,6 +78,30 @@ public class Mensaje implements Serializable {
         this.textoPlano = textoPlano;
         this.usuario = usuario;
         this.receptor = receptor;
+    }
+
+    public Mensaje(String textoPlano, Usuario usuario, Usuario receptor, boolean mensajeSMS, boolean mensajeEmail) {
+        this.textoPlano = textoPlano;
+        this.usuario = usuario;
+        this.receptor = receptor;
+        this.mensajeSMS = mensajeSMS;
+        this.mensajeEmail = mensajeEmail;
+    }
+
+    public boolean getMensajeSMS() {
+        return mensajeSMS;
+    }
+
+    public void setMensajeSMS(boolean mensajeSMS) {
+        this.mensajeSMS = mensajeSMS;
+    }
+
+    public boolean getMensajeEmail() {
+        return mensajeEmail;
+    }
+
+    public void setMensajeEmail(boolean mensajeEmail) {
+        this.mensajeEmail = mensajeEmail;
     }
 
     /**

@@ -32,7 +32,7 @@ public class Hashtag implements Serializable {
     /**
      * Contenido con el que se relaciona el hashtag.
      */
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "id_contenido")
     private Contenido contenido;
 

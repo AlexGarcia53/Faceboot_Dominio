@@ -76,18 +76,22 @@ public class Usuario {
     /**
      * Lista de mensajes recibidos del usuario.
      */
-    @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "usuario")
-    private List<Mensaje> mensajesRecibidos;
+//    @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "usuario")
+//    private List<Mensaje> mensajesRecibidos;
     /**
      * Lista de mensajes enviados por el usuario.
      */
-    @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "usuario")
-    private List<Mensaje> mensajesEnviados;
+//    @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "usuario")
+//    private List<Mensaje> mensajesEnviados;
 
     /**
      * Constructor vacío.
      */
     public Usuario() {
+    }
+
+    public Usuario(String usuario) {
+        this.usuario = usuario;
     }
 
     /**
@@ -191,7 +195,7 @@ public class Usuario {
      * @param mensajesRecibidos Lista de mensajes recibidos del usuario.
      * @param mensajesEnviados Lista de mensajes enviados por el usuario.
      */
-    public Usuario(Long id, String usuario, String email, String contrasenia, String celular, Sexo sexo, String token, GregorianCalendar fechaNacimiento, List<Mensaje> mensajesRecibidos, List<Mensaje> mensajesEnviados) {
+    public Usuario(Long id, String usuario, String email, String contrasenia, String celular, Sexo sexo, String token, GregorianCalendar fechaNacimiento) {
         this.id = id;
         this.usuario = usuario;
         this.email = email;
@@ -200,8 +204,8 @@ public class Usuario {
         this.sexo = sexo;
         this.token = token;
         this.fechaNacimiento = fechaNacimiento;
-        this.mensajesRecibidos = mensajesRecibidos;
-        this.mensajesEnviados = mensajesEnviados;
+//        this.mensajesRecibidos = mensajesRecibidos;
+//        this.mensajesEnviados = mensajesEnviados;
     }
 
 //    public Usuario(Long id, String usuario, String email, String contrasenia, String celular, Sexo sexo, String token, GregorianCalendar fechaNacimiento, List<Publicacion> publicaciones, List<Mensaje> mensajesRecibidos, List<Mensaje> mensajesEnviados) {
@@ -441,36 +445,36 @@ public class Usuario {
      *
      * @return Lista de mensajes recibidos del usuario.
      */
-    public List<Mensaje> getMensajesRecibidos() {
-        return mensajesRecibidos;
-    }
+//    public List<Mensaje> getMensajesRecibidos() {
+//        return mensajesRecibidos;
+//    }
 
     /**
      * Método para establecer la lista de mensajes recibidos.
      *
      * @param mensajesRecibidos Lista de mensajes recibidos del usuario.
      */
-    public void setMensajesRecibidos(List<Mensaje> mensajesRecibidos) {
-        this.mensajesRecibidos = mensajesRecibidos;
-    }
+//    public void setMensajesRecibidos(List<Mensaje> mensajesRecibidos) {
+//        this.mensajesRecibidos = mensajesRecibidos;
+//    }
 
     /**
      * Método para obtener la lista de mensajes enviados.
      *
      * @return Lista de mensajes enviados por el usuario.
      */
-    public List<Mensaje> getMensajesEnviados() {
-        return mensajesEnviados;
-    }
+//    public List<Mensaje> getMensajesEnviados() {
+//        return mensajesEnviados;
+//    }
 
     /**
      * Método para establecer la lista de mensajes enviados.
      *
      * @param mensajesEnviados Lista de mensajes enviados por el usuario.
      */
-    public void setMensajesEnviados(List<Mensaje> mensajesEnviados) {
-        this.mensajesEnviados = mensajesEnviados;
-    }
+//    public void setMensajesEnviados(List<Mensaje> mensajesEnviados) {
+//        this.mensajesEnviados = mensajesEnviados;
+//    }
 
     /**
      * Método para obtener el id.

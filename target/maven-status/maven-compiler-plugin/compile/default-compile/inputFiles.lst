@@ -3,10 +3,13 @@ C:\Users\Admin\Documents\GitHub\Faceboot_Dominio\src\main\java\excepciones\Error
 C:\Users\Admin\Documents\GitHub\Faceboot_Dominio\src\main\java\excepciones\ErrorEliminarPublicacionException.java
 C:\Users\Admin\Documents\GitHub\Faceboot_Dominio\src\main\java\excepciones\ErrorEliminarComentarioException.java
 C:\Users\Admin\Documents\GitHub\Faceboot_Dominio\src\main\java\dominio\Contenido.java
+C:\Users\Admin\Documents\GitHub\Faceboot_Dominio\src\main\java\excepciones\ErrorEnviarMensajeException.java
 C:\Users\Admin\Documents\GitHub\Faceboot_Dominio\src\main\java\dominio\Solicitud.java
 C:\Users\Admin\Documents\GitHub\Faceboot_Dominio\src\main\java\excepciones\ErrorBusquedaUsuarioException.java
 C:\Users\Admin\Documents\GitHub\Faceboot_Dominio\src\main\java\excepciones\ErrorEditarComentarioException.java
+C:\Users\Admin\Documents\GitHub\Faceboot_Dominio\src\main\java\excepciones\ErrorBusquedaMensajeException.java
 C:\Users\Admin\Documents\GitHub\Faceboot_Dominio\src\main\java\excepciones\ErrorGuardarPublicacionException.java
+C:\Users\Admin\Documents\GitHub\Faceboot_Dominio\src\main\java\excepciones\ErrorGuardarHashtagException.java
 C:\Users\Admin\Documents\GitHub\Faceboot_Dominio\src\main\java\dominio\Hashtag.java
 C:\Users\Admin\Documents\GitHub\Faceboot_Dominio\src\main\java\dominio\Usuario.java
 C:\Users\Admin\Documents\GitHub\Faceboot_Dominio\src\main\java\excepciones\ErrorBusquedaPublicacionesException.java
@@ -16,4 +19,5 @@ C:\Users\Admin\Documents\GitHub\Faceboot_Dominio\src\main\java\dominio\Operacion
 C:\Users\Admin\Documents\GitHub\Faceboot_Dominio\src\main\java\excepciones\ErrorGuardarComentarioException.java
 C:\Users\Admin\Documents\GitHub\Faceboot_Dominio\src\main\java\excepciones\ErrorGuardarUsuarioException.java
 C:\Users\Admin\Documents\GitHub\Faceboot_Dominio\src\main\java\dominio\Publicacion.java
+C:\Users\Admin\Documents\GitHub\Faceboot_Dominio\src\main\java\excepciones\ErrorConsultarHashtagException.java
 C:\Users\Admin\Documents\GitHub\Faceboot_Dominio\src\main\java\dominio\Mensaje.java
