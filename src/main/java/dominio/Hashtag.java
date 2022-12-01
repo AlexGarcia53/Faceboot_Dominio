@@ -30,11 +30,11 @@ public class Hashtag implements Serializable {
     @Column(name = "nombre", nullable = false, length = 100)
     private String nombre;
     /**
-     * Contenido con el que se relaciona el hashtag.
+     * Publicación con el que se relaciona el hashtag.
      */
     @ManyToOne
-    @JoinColumn(name = "id_contenido")
-    private Contenido contenido;
+    @JoinColumn(name = "id_publicacion")
+    private Publicacion publicacion;
 
     /**
      * Constructor vacío.
@@ -47,27 +47,27 @@ public class Hashtag implements Serializable {
     }
 
     /**
-     * Constructor que inicializa los atributos de nombre y contenido.
+     * Constructor que inicializa los atributos de nombre y publicacion.
      *
      * @param nombre Nombre del hashtag.
-     * @param contenido Contenido con el que se relaciona el hashtag.
+     * @param publicacion Publicacion con el que se relaciona el hashtag.
      */
-    public Hashtag(String nombre, Contenido contenido) {
+    public Hashtag(String nombre, Publicacion publicacion) {
         this.nombre = nombre;
-        this.contenido = contenido;
+        this.publicacion = publicacion;
     }
 
     /**
-     * Constructor que inicializa los atributos de id, nombre y contenido.
+     * Constructor que inicializa los atributos de id, nombre y publicacion.
      *
      * @param id Identificador único para el hashtag.
      * @param nombre Nombre del hashtag.
-     * @param contenido Contenido con el que se relaciona el hashtag.
+     * @param publicacion Publicacion con el que se relaciona el hashtag.
      */
-    public Hashtag(Long id, String nombre, Contenido contenido) {
+    public Hashtag(Long id, String nombre, Publicacion publicacion) {
         this.id = id;
         this.nombre = nombre;
-        this.contenido = contenido;
+        this.publicacion = publicacion;
     }
 
     /**
@@ -89,21 +89,21 @@ public class Hashtag implements Serializable {
     }
 
     /**
-     * Método para obtener el contenido.
+     * Método para obtener el publicacion.
      *
-     * @return Contenido con el que se relaciona el hashtag.
+     * @return Publicacion con el que se relaciona el hashtag.
      */
-    public Contenido getContenido() {
-        return contenido;
+    public Publicacion getPublicacion() {
+        return publicacion;
     }
 
     /**
-     * Método para establecer el contenido.
+     * Método para establecer el publicacion.
      *
-     * @param contenido Contenido con el que se relaciona el hashtag.
+     * @param publicacion Publicacion con el que se relaciona el hashtag.
      */
-    public void setContenido(Contenido contenido) {
-        this.contenido = contenido;
+    public void setPublicacion(Publicacion publicacion) {
+        this.publicacion = publicacion;
     }
 
     /**

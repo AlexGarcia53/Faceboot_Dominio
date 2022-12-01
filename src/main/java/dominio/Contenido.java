@@ -40,11 +40,7 @@ public class Contenido implements Serializable {
 //    @Lob
     @Column(name = "imagen", nullable = true)
     private String imagen;
-    /**
-     * Lista de hashtags del contenido.
-     */
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "contenido", fetch = FetchType.EAGER)
-    private List<Hashtag> hashtags= new ArrayList<>();
+
 
     /**
      * Constructor vacío.
@@ -72,32 +68,19 @@ public class Contenido implements Serializable {
         this.imagen = imagen;
     }
 
-    /**
-     * Constructor que inicializa los atributos de texto, imagen y hashtags.
-     *
-     * @param textoPlano Texto plano que tiene el contenido.
-     * @param imagen Imagen que tiene el contenido.
-     * @param hashtags Lista de hashtags del contenido.
-     */
-    public Contenido(String textoPlano, String imagen, List<Hashtag> hashtags) {
-        this.textoPlano = textoPlano;
-        this.imagen = imagen;
-        this.hashtags = hashtags;
-    }
 
     /**
-     * Constructor que inicializa los atributos de id, texto, imange y hashtag.
+     * Constructor que inicializa los atributos de id, texto y imange.
      *
      * @param id Identificador único para el contenido.
      * @param textoPlano Texto plano que tiene el contenido.
      * @param imagen Imagen que tiene el contenido.
-     * @param hashtags Lista de hashtags del contenido.
      */
-    public Contenido(Long id, String textoPlano, String imagen, List<Hashtag> hashtags) {
+    public Contenido(Long id, String textoPlano, String imagen) {
         this.id = id;
         this.textoPlano = textoPlano;
         this.imagen = imagen;
-        this.hashtags = hashtags;
+
     }
 
     /**
@@ -134,28 +117,6 @@ public class Contenido implements Serializable {
      */
     public void setImagen(String imagen) {
         this.imagen = imagen;
-    }
-
-    /**
-     * Método para obtener los hashtags.
-     *
-     * @return Lista de hashtags del contenido.
-     */
-    public List<Hashtag> getHashtags() {
-        return hashtags;
-    }
-
-    /**
-     * Método para establecer los hashtags.
-     *
-     * @param hashtags Lista de hashtags del contenido.
-     */
-    public void setHashtags(List<Hashtag> hashtags) {
-        this.hashtags = hashtags;
-    }
-    
-    public void agregarHashtag(Hashtag hashtag){
-        this.hashtags.add(hashtag);
     }
 
     /**

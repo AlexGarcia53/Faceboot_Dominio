@@ -12,6 +12,7 @@ import java.io.Serializable;
 import java.util.GregorianCalendar;
 import java.util.List;
 import jakarta.persistence.*;
+import java.util.ArrayList;
 
 /**
  * Clase que representa a la entidad de publicación.
@@ -57,6 +58,9 @@ public class Publicacion implements Serializable {
      */
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "publicacion", fetch = FetchType.EAGER)
     private List<Comentario> comentarios;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "publicacion", fetch = FetchType.EAGER)
+    private List<Hashtag> hashtags = new ArrayList<>();
 
     /**
      * Constructor vacío.
@@ -86,6 +90,13 @@ public class Publicacion implements Serializable {
         this.contenido = contenido;
     }
 
+    public Publicacion(GregorianCalendar fechaCreacion, Usuario usuario, Contenido contenido, List<Hashtag> hashtags) {
+        this.fechaCreacion = fechaCreacion;
+        this.usuario = usuario;
+        this.contenido = contenido;
+        this.hashtags = hashtags;
+    }
+    
     /**
      * Constructor que inicializa los atributos de id, fecha, usuario y
      * contenido.
@@ -119,6 +130,17 @@ public class Publicacion implements Serializable {
         this.contenido = contenido;
         this.comentarios = comentarios;
     }
+
+    public Publicacion(Long id, GregorianCalendar fechaCreacion, Usuario usuario, Contenido contenido, List<Comentario> comentarios, List<Hashtag> hashtags) {
+        this.id = id;
+        this.fechaCreacion = fechaCreacion;
+        this.usuario = usuario;
+        this.contenido = contenido;
+        this.comentarios = comentarios;
+        this.hashtags = hashtags;
+    }
+    
+    
 
     /**
      * Método para obtener la fecha de creación.
@@ -207,6 +229,24 @@ public class Publicacion implements Serializable {
             }
         }
     }
+    
+    /**
+     * Método para establecer los hashtags.
+     *
+     * @param hashtags Lista de hashtags del contenido.
+     */
+    public void setHashtags(List<Hashtag> hashtags) {
+        this.hashtags = hashtags;
+    }
+    
+    public void agregarHashtag(Hashtag hashtag){
+        this.hashtags.add(hashtag);
+    }
+
+    public List<Hashtag> getHashtags() {
+        return hashtags;
+    }
+     
     
     /**
      * Método para obtener el id.
