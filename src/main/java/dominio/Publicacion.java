@@ -17,7 +17,7 @@ import java.util.ArrayList;
 /**
  * Clase que representa a la entidad de publicación.
  *
- * @author Sotelo Juan, García Alex, Tellez Jarol
+ * @author Equipo broker
  */
 @Entity
 @JsonIdentityInfo(
@@ -58,7 +58,9 @@ public class Publicacion implements Serializable {
      */
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "publicacion", fetch = FetchType.EAGER)
     private List<Comentario> comentarios;
-    
+    /**
+     * Lista de hashtags que tiene la publicación.
+     */
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "publicacion", fetch = FetchType.EAGER)
     private List<Hashtag> hashtags = new ArrayList<>();
 
@@ -90,13 +92,22 @@ public class Publicacion implements Serializable {
         this.contenido = contenido;
     }
 
+    /**
+     * Constructor que inicializa los atributos de fecha, usuario, contenido,
+     * hashtags.
+     *
+     * @param fechaCreacion Fecha de creación de la publicación.
+     * @param usuario Usuario con el que se relaciona la publicación.
+     * @param contenido Contenido con el que se relaciona la publicación.
+     * @param hashtags Hashtags de la publicación.
+     */
     public Publicacion(GregorianCalendar fechaCreacion, Usuario usuario, Contenido contenido, List<Hashtag> hashtags) {
         this.fechaCreacion = fechaCreacion;
         this.usuario = usuario;
         this.contenido = contenido;
         this.hashtags = hashtags;
     }
-    
+
     /**
      * Constructor que inicializa los atributos de id, fecha, usuario y
      * contenido.
@@ -139,8 +150,6 @@ public class Publicacion implements Serializable {
         this.comentarios = comentarios;
         this.hashtags = hashtags;
     }
-    
-    
 
     /**
      * Método para obtener la fecha de creación.
@@ -213,23 +222,38 @@ public class Publicacion implements Serializable {
     public void setComentarios(List<Comentario> comentarios) {
         this.comentarios = comentarios;
     }
-    
-    public void agregarComentario(Comentario comentario){
+
+    /**
+     * Método para agregar un comentario a la publicación.
+     *
+     * @param comentario comentario a agregar.
+     */
+    public void agregarComentario(Comentario comentario) {
         this.comentarios.add(comentario);
     }
-    
-    public void eliminarComentario(Comentario comentario){
+
+    /**
+     * Método para eliminar un comentario a la publicación.
+     *
+     * @param comentario comentario a eliminar.
+     */
+    public void eliminarComentario(Comentario comentario) {
         this.comentarios.remove(comentario);
     }
-    
-    public void editarComentario(Comentario comentario){
+
+    /**
+     * Método para editar un comentario a la publicación.
+     *
+     * @param comentario comentario a editar.
+     */
+    public void editarComentario(Comentario comentario) {
         for (int i = 0; i < this.comentarios.size(); i++) {
-            if(comentarios.get(i).getId()==comentario.getId()){
+            if (comentarios.get(i).getId() == comentario.getId()) {
                 comentarios.set(i, comentario);
             }
         }
     }
-    
+
     /**
      * Método para establecer los hashtags.
      *
@@ -238,16 +262,15 @@ public class Publicacion implements Serializable {
     public void setHashtags(List<Hashtag> hashtags) {
         this.hashtags = hashtags;
     }
-    
-    public void agregarHashtag(Hashtag hashtag){
+
+    public void agregarHashtag(Hashtag hashtag) {
         this.hashtags.add(hashtag);
     }
 
     public List<Hashtag> getHashtags() {
         return hashtags;
     }
-     
-    
+
     /**
      * Método para obtener el id.
      *

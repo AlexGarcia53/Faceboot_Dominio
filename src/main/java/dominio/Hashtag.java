@@ -11,7 +11,7 @@ import jakarta.persistence.*;
 /**
  * Clase que representa a la entidad de hashtag.
  *
- * @author Sotelo Juan, García Alex, Tellez Jarol
+ * @author Equipo broker
  */
 @Entity
 @Table(name = "hashtags")

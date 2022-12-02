@@ -7,7 +7,7 @@ package dominio;
 /**
  * Clase enum que contiene las operaciones que pueden ser solicitadas.
  *
- * @author Sotelo Juan, García Alex, Tellez Jarol
+  * @author Equipo broker
  */
 public enum Operacion {
     registrar_usuario, iniciar_sesion, iniciar_sesion_facebook, registrar_publicacion, registrar_detector_notificaciones, suscribrir_observador_registrarPublicacion,

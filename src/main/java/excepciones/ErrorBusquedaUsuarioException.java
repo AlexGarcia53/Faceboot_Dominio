@@ -8,7 +8,7 @@ package excepciones;
  * Clase utilizada para lanzar excepciones de tipo error busqueda de usuario, que
  * extiende de RuntimeException.
  *
- * @author Sotelo Juan, García Alex, Tellez Jarol
+ * @author Equipo broker
  */
 public class ErrorBusquedaUsuarioException extends RuntimeException {
 

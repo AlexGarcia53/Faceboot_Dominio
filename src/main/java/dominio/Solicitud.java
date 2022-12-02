@@ -8,7 +8,7 @@ package dominio;
  * Clase que representa una solicitud, donde se almacena la operación a
  * realizar, los datos y la respuesta.
  *
- * @author Sotelo Juan, García Alex, Tellez Jarol
+ * @author Equipo broker
  */
 public class Solicitud {
 

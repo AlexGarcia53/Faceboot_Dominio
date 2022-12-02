@@ -5,15 +5,23 @@
 package excepciones;
 
 /**
+ * Clase utilizada para lanzar excepciones de tipo error editar comentario, que
+ * extiende de RuntimeException.
  *
- * @author Admin
+ * @author Equipo broker
  */
 public class ErrorEditarComentarioException extends RuntimeException{
-
+    /**
+     * Método utilizado para arrojar excepciones sin mensajes.
+     */
     public ErrorEditarComentarioException() {
         super();
     }
-
+    /**
+     * Método utilizado para arrojar excepciones un mensaje definido.
+     *
+     * @param string Mensaje a mostrar.
+     */
     public ErrorEditarComentarioException(String message) {
         super(message);
     }

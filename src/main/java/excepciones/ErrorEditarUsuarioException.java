@@ -5,15 +5,23 @@
 package excepciones;
 
 /**
+ * Clase utilizada para lanzar excepciones de tipo error editar usuario, que
+ * extiende de RuntimeException.
  *
- * @author Admin
+ * @author Equipo broker
  */
 public class ErrorEditarUsuarioException extends RuntimeException{
-
+    /**
+     * Método utilizado para arrojar excepciones sin mensajes.
+     */
     public ErrorEditarUsuarioException() {
         super();
     }
-
+    /**
+     * Método utilizado para arrojar excepciones un mensaje definido.
+     *
+     * @param string Mensaje a mostrar.
+     */
     public ErrorEditarUsuarioException(String message) {
         super(message);
     }

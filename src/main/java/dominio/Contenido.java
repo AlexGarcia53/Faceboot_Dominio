@@ -16,7 +16,7 @@ import java.util.ArrayList;
 /**
  * Clase que representa a la entidad de contenido.
  *
- * @author Sotelo Juan, García Alex, Tellez Jarol
+ * @author Equipo broker
  */
 @Entity
 @Table(name = "contenidos")

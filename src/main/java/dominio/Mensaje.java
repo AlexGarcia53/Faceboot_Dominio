@@ -11,7 +11,7 @@ import jakarta.persistence.*;
 /**
  * Clase que representa a la entidad de mensaje.
  *
- * @author Sotelo Juan, García Alex, Tellez Jarol
+ * @author Equipo broker
  */
 @Entity
 @Table(name = "mensajes")
@@ -79,7 +79,15 @@ public class Mensaje implements Serializable {
         this.usuario = usuario;
         this.receptor = receptor;
     }
-
+    /**
+     * Construcor que inicializa toros los atrbutos a excepción del id.
+     * 
+     * @param textoPlano Texto plano que tiene el mensaje.
+     * @param usuario Usuario con el que se relaciona el mensaje.
+     * @param receptor Usuario al que se le envia el mensaje.
+     * @param mensajeSMS mensaje SMS a enviar.
+     * @param mensajeEmail mensaje email a enviar.
+     */
     public Mensaje(String textoPlano, Usuario usuario, Usuario receptor, boolean mensajeSMS, boolean mensajeEmail) {
         this.textoPlano = textoPlano;
         this.usuario = usuario;
@@ -87,19 +95,31 @@ public class Mensaje implements Serializable {
         this.mensajeSMS = mensajeSMS;
         this.mensajeEmail = mensajeEmail;
     }
-
+    /**
+     * Método para obtener los mensajes sms.
+     * @return mensajes sms.
+     */
     public boolean getMensajeSMS() {
         return mensajeSMS;
     }
-
+    /**
+     * Método para establecer los mensajes sms.
+     * @param mensajeSMS 
+     */
     public void setMensajeSMS(boolean mensajeSMS) {
         this.mensajeSMS = mensajeSMS;
     }
-
+    /**
+     * Método para obtener los mensajes email.
+     * @return mensajes email.
+     */
     public boolean getMensajeEmail() {
         return mensajeEmail;
     }
-
+    /**
+     * Método para establecer los mensajes email.
+     * @param mensajeEmail mensajes email.
+     */
     public void setMensajeEmail(boolean mensajeEmail) {
         this.mensajeEmail = mensajeEmail;
     }
